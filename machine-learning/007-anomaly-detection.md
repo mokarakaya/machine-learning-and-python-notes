@@ -16,6 +16,8 @@
 - We can get distance between x and mean of the data. An example distance metric for this purpose is Mahalonobis distance
 - `mahalonobis(x, x_mean) = (x - x_mean) S^-1 (x - x_mean)^T`
 
+- A nice example with Gaussian distribution is [here](https://towardsdatascience.com/understanding-anomaly-detection-in-python-using-gaussian-mixture-model-e26e5d06094b).
+
 - Statistical approaches may work poorly on multi-dimensional data.
 
 # K-nearest Neighbors
@@ -24,8 +26,48 @@
 # Clustering-Based Techniques
 - First approach is to discard small clusters which are far from other clusters. This approach is sensitive to the number of clusters and the distance threshold.
 - Another approach is to cluster the items first, and then check each items distance to its cluster center.
+- We can simply calculate the distance from the instance to the nearest centroid. An other option is to calculate distance and divide it with the median distance of the cluster instances. The second formula is less sensitive to cluster density. Because cluster density can be compact or loose.
+
+## Impact of Outliers to the Initial Clustering
+- One approach is the cluster all objects, then remove outliers and cluster again.
+- Another approach is to put potential outliers to a cluster at the beginning. After clustering the remaining items will be labeled as outliers.
 
 # Evaluation
 - AUC is one of the most common evaluation metrics for anomaly detection. We can also check confusion matrix.
 
-https://towardsdatascience.com/understanding-anomaly-detection-in-python-using-gaussian-mixture-model-e26e5d06094b
+
+# GaussianMixture
+
+## Univariate Gaussian Mixture
+
+- Mixture models can cluster points better than K-means when we have ellipsoidal clusters.
+
+
+## Expectation Minimization
+
+```
+Select inital set of model parameters (e.g. by using Kmeans)
+
+repeat
+  Expectation step: For each instance calculate the probability of the object belongs to each distribution. prob(distribution j | xi, O)
+  Maximization step: Given the probabilities, find the new estimates of the parameters of that maximize the expected likelihood. (Assigning the points to the new clusters)
+until The parameters do not change or changes under a threshold.
+
+```
+
+- `prob(distribution j | xi, O)`: We use Gaussian distribution formula to calculate this. So, we need mean, and std of distribution j. If the data has more than one dimension then we will need covariance matrix, instead of the std.
+
+- `prob(distribution j | xi, O)` is calculated by using Bayes Rule, so first we calculate `prob(xi, Oj)` for each `O` and then we use Bayes Rule to calculate `prob(distribution j | xi, O)`. Because sum of `prob(distribution j | xi, Oj)` should be 1.
+
+- Since probability score with Gaussian distribution will be very small, we can use log probability.
+
+```
+
+from sklearn.mixture import GaussianMixture
+gm = GaussianMixture(n_components = 5, covariance_type = 'full', random_state=0, )
+gm.fit(X_train)
+gm.predict_proba(X_train)
+
+```
+
+- `predict_proba` returns the probability of the instance to belongs to the clusters. Each instance has 5 probabilities in this example.
