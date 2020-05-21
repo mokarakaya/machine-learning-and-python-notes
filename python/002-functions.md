@@ -47,28 +47,31 @@ def a(b, /, *, c=False):
 - Python 3.8 and higher has positional-only arguments.
 
 
-# Function Decorators with `FUNCTOOLS.WRAPS`
-
-- `trace` is decorator functions and `wrap` function wraps the main function `func`.
-- `@trace` defines that `fibonacci` function is decorated by `trace` function.
-- Use the wraps decorator from the functools built-in module when you define your own decorators to avoid issues.
+# Function Decorators
 
 ```
-from functools import wraps
 
 def trace(func):
- @wraps(func)
- def wrap(\*args, \**kwargs)
-  result = func(*args, **kwargs)
-   # do something
-   return result
-```
+ def wrap(*args, **kwargs):
+    print('calling with', args, kwargs)
+    result = func(*args, **kwargs)
+    print('returns', result)
+    return result
+ return wrap
+
+
+@trace
+def next_me(i):
+    return i + 1
+
+b = next_me(1)
+print(b)
 
 ```
-@trace
-def fibonacci(n):
-    """Return the n-th Fibonacci number"""
-    if n in (0, 1):
-        return n
-    return (fibonacci(n - 2) + fibonacci(n - 1))
+
+- will print;
+```
+calling with (1,) {}
+returns 2
+2
 ```

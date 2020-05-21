@@ -10,18 +10,31 @@
 # `re` module for Regular Expressions
 
 ```
-re.search('o', 'world')
+re.search('o', 'worldo')
 <_sre.SRE_Match object; span=(1, 2), match='o'>
+
+
+re.findall('o', 'worldo')
+['o', 'o']
+
+list(re.finditer('o', 'worldo'))
+[<_sre.SRE_Match object; span=(1, 2), match='o'>, <_sre.SRE_Match object; span=(5, 6), match='o'>]
 
 ```
 
 - Returns None if there is no  match.
+
+- `split()`: This method is used to split a given string into a list.
+- `sub()`: This method is used to find a substring where a regex pattern matches, and then it replaces the matched substring with a different string.
+- `subn()`: This method is similar to the sub() method, but it returns the new string, along with the number of replacements.
 
 # Built-in
 
 - `Built-in modules`: os, sys, math, random etc.
 - `Built-in types`: Integers, floating-point, complex numbers, strings, boolean, built-in functions.
 
+# Data Structures
+- dictonaries, lists, sets, tuples, strings. Strings and tuples are immutable.
 
 # Access specifier
 - Python uses `_` and `__`
@@ -104,8 +117,37 @@ print(b)
 
 - `x = ['a', 'b']`
   - `x.remove('b')` -> ['a']
-  - `del x[1]` -> ['a']
+  - `del(x[1])` -> ['a']
   - `x.pop(1)` -> ['a'], and returns 'b'
 - `x = np.array(['a', 'b'])`
   - `np.delete(x, [1])` -> returns ['a'] np array and does not change x
   - `np.delete(x, np.where(x == 'b'))` -> returns ['a'] np array and does not change x.
+
+
+# Pickle
+
+```
+import pickle
+
+example_dict = {1:"6",2:"2",3:"f"}
+
+pickle_out = open("dict.pickle","wb")
+pickle.dump(example_dict, pickle_out)
+pickle_out.close()
+
+
+pickle_in = open("dict.pickle","rb")
+example_dict = pickle.load(pickle_in)
+
+```
+
+# Dynamically and Strongly typed
+- Python is strongly typed and `"1" + 2 ` will throw `TypeError`. Javascript is weakly typed.
+- Python is dynamically typed, and data types are checked during execution.
+
+# Pyc files
+- These are created by the Python interpreter when a .py file is imported, and they contain the "compiled bytecode" of the imported module/program, the idea being that the "translation" from source code to bytecode (which only needs to be done once) can be skipped on subsequent imports if the .pyc is newer than the corresponding .py file, thus speeding startup a little. But it's still interpreted.
+
+
+# Memory Management
+- Memory management in Python is handled by the Python Memory Manager. The memory allocated by the manager is in form of a private heap space dedicated for Python. All Python objects are stored in this heap and being private, it is inaccessible to the programmer. Additionally, Python has an in-built garbage collection to recycle the unused memory for the private heap space.

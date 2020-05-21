@@ -29,6 +29,8 @@
   - In order to declare significance, we need high t-value, and low p-value.
   - If A and B sets are identical we will get; `t-value: 0.0`, `p-value:1.0`
 
+- A neat explanation is [here](https://www.youtube.com/watch?v=-FtlH4svqx4).
+
 ## Duration of the Experiment
 - We can plot t-values and p-values daily and check if there is a trend.
 

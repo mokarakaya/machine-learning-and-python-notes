@@ -21,6 +21,10 @@
 -  `.loc` gets rows (or columns) with particular labels from the index. `.iloc` gets rows (or columns) at particular positions in the index (so it only takes integers)
 - Use `data['pop']` rather than `data.pop` since `data.pop` may conflict with the name of the build-in functions.
 
+# Data Update
+
+- `df.loc[df['Click_Id']=='A',['Click_Id','Click_Count']] = ['A1',10000]`: Update the row where Click_Id equals to A. Set Click_Id, and Click_Count to A1, and 10000.
+
 # Index Alignment
 
 ## Series
@@ -40,6 +44,14 @@
 - In Numpy, `NaN` is a special floating-point number and if we use it in an array the type of the array should be  float e.g. `float64`
 - Pandas handles `None`, and `NaN` interchangeably where it is appropriate.
 - Related functions are `isnull()`, `notnull()` (opposite of isnull), `dropna()`, `fillna()`
+
+- To fill N/A values of column A with 0 and column B with 1;
+
+```
+values = {'A': 0, 'B': 1}
+df.fillna(value=values)`
+
+```
 
 
 # Multiple Index
@@ -78,3 +90,7 @@
 # eval() and query()
 - `numexpr.evaluate('(x > 0.5) & (y < 0.5)')`
 - In Numpy numexpr evaluates faster since it does not keep intermediate operations in memory. Pandas eval() and query() are similar and they also use numexpr internally.
+
+
+# Rename columns
+- `df = df.rename(columns = {'Count':'NewCount'})`: Renames column Count to NewCount.
