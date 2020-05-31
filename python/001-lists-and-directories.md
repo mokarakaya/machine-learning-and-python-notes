@@ -63,7 +63,14 @@ power_tools.sort(key=lambda x: (x.weight, x.name))
 
 - In Python 3.5 and before, iterating over a dict would return keys in arbitrary order
 
-- `OrderedDict` has similar behavior as `dict` (since Python 3.7), but `OrderedDict` has better performance if we have many insertion and pop operations.
+- `OrderedDict` has similar behavior as `dict` (since Python 3.7), but `OrderedDict`.
+
+```
+a = {'x':1}
+b = OrderedDict(sorted(a.items(), key=lambda t: t[0]))
+b.popitem(last=True)
+
+```
 
 # Handle Missing Directory keys
 

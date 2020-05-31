@@ -1,4 +1,4 @@
-from mokarakaya_pytest_notes.source import capitalize
+from mokarakaya_ml_notes.pytest.source import capitalize
 
 
 

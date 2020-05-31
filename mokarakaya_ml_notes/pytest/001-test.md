@@ -2,7 +2,7 @@
 
 ```
 python setup.py install
-pytest mokarakaya_pytest_notes/test/
+pytest mokarakaya_ml_notes/pytest/test/
 
 ```
 
@@ -33,8 +33,6 @@ pytest mokarakaya_pytest_notes/test/
 
 
 ```
-
-- See modules in `https://pypi.org/project/mokarakaya-machine-learning-and-python-notes/`
 
 # References
 - `https://medium.com/@bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c`

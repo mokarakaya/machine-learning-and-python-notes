@@ -18,19 +18,38 @@ return list(res)
 
 # `as_completed`
 ```
+
+from concurrent import futures
+
+def download_one(a):
+    print(a)
+    return a +1
+
 def download_many(cc_list):
-    with futures.ThreadPoolExecutor(max_workers=3) as executor:  
+    with futures.ThreadPoolExecutor(max_workers=3) as executor:
         to_do = []
-        for cc in sorted(cc_list):  
-            future = executor.submit(download_one, cc)  
-            to_do.append(future)  
+        for cc in sorted(cc_list):
+            future = executor.submit(download_one, cc)
+            to_do.append(future)
 
         results = []
-        for future in futures.as_completed(to_do):  
-            res = future.result()  
+        for future in futures.as_completed(to_do):
+            res = future.result()
             results.append(res)
 
-    return len(results)
+    return results
+
+results = download_many([1,2,3])
+print(results)
+
+```
+- will print something similar to this;
+
+```
+1
+2
+3
+[4, 3, 2]
 ```
 
 - `as_completed` prints the results of the thread when it is completed. So the order may change. But the future can be from another executor.

@@ -19,7 +19,10 @@
 
 # Data Selection
 -  `.loc` gets rows (or columns) with particular labels from the index. `.iloc` gets rows (or columns) at particular positions in the index (so it only takes integers)
+- `loc` is label-based, which means that we have to specify the name of the rows and columns that we need to filter out.
+-  `iloc` is integer index-based. So here, we have to specify rows and columns by their integer index.
 - Use `data['pop']` rather than `data.pop` since `data.pop` may conflict with the name of the build-in functions.
+
 
 # Data Update
 

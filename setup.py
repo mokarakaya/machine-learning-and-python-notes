@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="mokarakaya-machine-learning-and-python-notes",
-    version="0.0.3",
+    version="0.0.4",
     author="mokarakaya",
     author_email="mokarakaya@gmail.com",
     description="Python notes with examples",

@@ -59,6 +59,27 @@ def fast():
   yield from child()
 ```
 
+## Combining iterators with `yield from`
+
+```
+def child():
+    for i in range(10):
+        yield i
+
+def child2():
+    for i in range(10,20):
+        yield i
+
+def fast():
+    yield from child()
+    yield from child2()
+
+it = fast()
+for x in it:
+    print(x)
+
+```
+
 - `yield from` expression allows you to compose multiple nested generators.
 - `yield from` has better performance than manually iterating in the generator function.
 

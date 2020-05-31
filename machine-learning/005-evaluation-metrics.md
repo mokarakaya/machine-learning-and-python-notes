@@ -2,6 +2,7 @@
 ## Per-Class Accuracy
 - Average accuracy of classes.
 - When classes are imbalanced, we should look at the per-class accuracy, both the average and the individual per-class accuracy numbers.
+- Confusion matrix also helps to visualize accuracy.
 
 ## Log-loss
 -  <img style="webkit-filter: invert(1);filter:invert(1);width: 70%" src="images/math4.svg">
