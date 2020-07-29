@@ -22,7 +22,7 @@
 - `loc` is label-based, which means that we have to specify the name of the rows and columns that we need to filter out.
 -  `iloc` is integer index-based. So here, we have to specify rows and columns by their integer index.
 - Use `data['pop']` rather than `data.pop` since `data.pop` may conflict with the name of the build-in functions.
-
+- `df.iloc[rows, columns]`. First part defines, the rows to be selected, and the second part defines the columns to be selected. E.g. `df.iloc[1:3, 2:4]` returns row number 1, and 2 for column number two and number 4. Rows and columns start at zero. ` df.columns.get_loc("col_name")` returns column id.
 
 # Data Update
 
@@ -97,3 +97,6 @@ df.fillna(value=values)`
 
 # Rename columns
 - `df = df.rename(columns = {'Count':'NewCount'})`: Renames column Count to NewCount.
+
+# value_counts
+- Return the number of occurances for values. Suitable for categorical columns. `reviews.taster_name.value_counts()`

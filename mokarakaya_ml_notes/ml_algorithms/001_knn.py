@@ -29,6 +29,6 @@ print(counter.shape)
 predictions = np.array([c.most_common()[0][0] for c in counter])
 print(predictions.shape)
 accuracy = accuracy_score(df_test.iloc[:, feature_num:].values, predictions)
-print(accuracy)
+print(accuracy) # 0.9705882352941176
 
 

@@ -38,6 +38,12 @@
 
   - `Formatting`: Date format is a good example.
 
+# Data Leakage
+- Data leakage causes a model to look accurate until you start making decisions with the model, and then the model becomes very inaccurate on production.
+
+- There are two types of data leakage:
+  - `Target Leakage`: Predictors include data that will not be available at the time you make predictions. E.g. average sales price of homes in the same neighborhood. This might be a leakage, if we include the prices after the house is sold to calculate average price.
+  - `Train-test contamination`: Somehow we use test data in train data. E.g. a mistake in train-test split, or using test data for feature engineering.
 
 # Normalizing Numerical Data
 
