@@ -27,4 +27,5 @@
 - Model can be served in an embedded model with `MLeap`
 - `Facets` can help to visualize slices in data. Model may not be working well when values of the feature x is low.
 - `Mlflow` experiment tracking tool with an api, and web interface.
+- `Airflow` is a tool to create chained scheduled jobs, and pipelines. E.g. to clean up data.
 - `Shadow models`: deploy a new model without removing the original, and see the performance of the new model by replicating the request. User does not interact with the shadow model.

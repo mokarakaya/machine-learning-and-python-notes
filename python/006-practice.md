@@ -106,6 +106,35 @@ print(b)
 
 ```
 
+# Stack and Queue
+
+- Use list and `pop()` for stack (FILO)  behavior
+- Use list and `pop(0)` for queue (FIFO)  behavior
+
+```
+a = [2,4,6]
+a.pop() -> 6
+a = [2,4,6]
+a.pop(0) -> 2
+```
+
+## Deque
+
+- We can also use `deque` for the same behavior.
+- `pop()` is for stack, and `popleft()` is for queue.
+
+```
+from collections import deque
+a = deque()
+a.extend([2,4,6])
+a.pop() -> 6
+
+a = deque()
+a.extend([2,4,6])
+a.popleft() -> 2
+
+```
+
 # Check numbers and letters in a string
 
 - `'123a'.isnumeric()`: Check if a string only contains numbers.
