@@ -1,6 +1,6 @@
 import numpy as np
 from mokarakaya_ml_notes.ml_algorithms.util import data_util
-
+from sklearn.linear_model import LinearRegression
 
 def linear_regression(X, y, epochs=1000, learning_rate=0.0001):
     m = float(y.shape[0])
@@ -36,3 +36,6 @@ predictions = np.dot(theta, test_x.T) + b
 
 avg_error = np.sum(np.abs(predictions - test_y)) / test_y.shape
 print('avg_error:', avg_error) #avg_error: [0.78951395]
+
+reg = LinearRegression().fit(df_train_x, df_train_y)
+print(reg.score(test_x, test_y)) # 0.31

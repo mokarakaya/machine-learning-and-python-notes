@@ -2,12 +2,7 @@
 Naive bayes algorithm to solve spam classification problem.
 """
 
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-from collections import Counter
 from sklearn.metrics import accuracy_score
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import GaussianNB
 from mokarakaya_ml_notes.ml_algorithms.util import data_util
 from sklearn.naive_bayes import MultinomialNB
 

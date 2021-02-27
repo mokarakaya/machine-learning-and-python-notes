@@ -7,28 +7,19 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
 from sklearn.metrics import accuracy_score
 from mokarakaya_ml_notes.ml_algorithms.util import data_util
+import pandas as pd
 
 train_ratio = 0.8
-k = 9
-feature_num = 4
+k = 10
 
-df_train, df_test = data_util.read_iris_data(train_ratio)
+df_X_train, df_y_train, df_X_test, df_y_test = data_util.read_iris_data(train_ratio)
 
-similarities = cosine_similarity(df_test.iloc[:, 0:feature_num], df_train.iloc[:, 0:feature_num])
+similarities = cosine_similarity(df_X_train, df_X_test).T
 print(similarities.shape)
-
-nn = np.argsort(similarities * -1)
-print(nn.shape)
-
-knn = nn[:, :k]
-print(knn.shape)
-labels = np.array([df_train.iloc[:, feature_num:].values[a].flatten() for a in knn])
-print(labels.shape)
-counter = np.array(list(map(Counter, labels)))
-print(counter.shape)
-predictions = np.array([c.most_common()[0][0] for c in counter])
-print(predictions.shape)
-accuracy = accuracy_score(df_test.iloc[:, feature_num:].values, predictions)
-print(accuracy) # 0.9705882352941176
+nn = np.argsort(similarities * -1)[:,:k]
+nn = pd.DataFrame(nn).applymap(lambda x: df_y_train.iloc[x])
+predictions = [Counter(row).most_common()[0][0] for _, row in nn.iterrows()]
+accuracy = accuracy_score(df_y_test.values, predictions)
+print(accuracy) # 0.9666666666666667
 
 
