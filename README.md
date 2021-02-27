@@ -15,6 +15,6 @@ My notes about the topics in machine learning and python
 
 - [Pytest](mokarakaya_ml_notes/pytest)
 
-- [Deep Learning](deep-learning)
-
 - [Statistics](statistics)
+
+- [Deep Learning](deep-learning)
