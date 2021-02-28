@@ -2,6 +2,10 @@
 
 - **Cons**: Prone to overfitting.
 
+- Outliers in independent variables (X) does not affect decision trees (unlikely to linear regression).
+- Outliers in dependent variables (Y) affects decision trees (likely to linear regression)
+- Decision trees may give poor results on unbalanced datasets. We may need resampling for these kind of cases.
+
 # ID3 Algorithm
 - Pseudo-code for a function called `createBranch()` would look like this:
 ```
@@ -59,6 +63,12 @@ for each feature in dataset:
 - Entropy of a half/half split is `1`.
 - `Information Gain = CurrentEntropy - NewEntropy`
 
+# Gini Index
+- `Gini = 1 - \sum_{classes} (p_i)^2`
+- We calculate gini index for deciding on the purity of the split.
+- If gini score is zero then the sample is pure which means it has only one class.
+- If gini is more then zero, then the sample should have more than one classes.
+
 # Gain Ratio
 - Some algorithms e.g. CART force binary splits even if the feature has more than two classes.
 - In some other algorithms e.g. C4.5, it is possible to split into more than 2 nodes.
@@ -73,12 +83,6 @@ for each feature in dataset:
   - Replace subtree with the majority class in the subtree.
   - Replace subtree with the most frequently used branch.
 - Postpruning tends to give better results than prepruning since decisions are made on fully grown tree.
-
-# Random Forest
-
-- Random forests ensemble many decision trees.
-- We can create different decision trees by randomly sampling the dataset, or randomly using a subset of the features.
-- We lose interpretability by using random-forests.
 
 # AdaBoost
 - Adaboost is an ensemble algorithm for decision trees. It is generally used for binary classification.
@@ -96,3 +100,8 @@ for each feature in dataset:
 - For classification, we create residuals for each instance. Initially they are set as `mean - yi`. Then, we create a tree by using residuals as y. Each instance will end up on a leaf, and for each leaf we get the average of the residuals, and update them as follows `mean + learning_rate * leaf_average`
 
 - A neat explanation is [here](https://www.youtube.com/watch?v=3CC4N4z3GJc)
+
+# Decision Tree Regression
+- Instead of using impurity measures, we use MSE to find the best split in decision tree regression.
+- At this point, the algorithm has to look for all of the binary splits in order to find the one that minimizes the target function (MSE).
+- The algorithm runs until an MSE threshold or max depth is reached.

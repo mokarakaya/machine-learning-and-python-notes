@@ -140,8 +140,8 @@ We can use `sklearn.MinMaxScaler`
 
 ## Ensemble Methods
 - We can combine some of the good predictors.
-- Bagging can decrease variance in an overfit model.
-- Boosting can decrease bias in an underfit model.
+- Bagging can decrease variance in an overfit model. The algorithms are built separatelly, and then the results are combined.
+- Boosting can decrease bias in an underfit model. Focuses on the misclassified samples by reweighting the samples. Highly weighted samples will be used in training more.
 
 ### Bagging
 
