@@ -16,7 +16,7 @@
 - After we calculate t-value we run t-test.
 - T-test is running Ho (null hypothesis) which measures if there is difference between two samples statistically.
 - We define a critical value, and if t-value is lower than the critical-value we do not reject the null hypothesis.
-- In order to fin the critical value, we need to define define degrees of freedom and probability. Then we will look up from t-table.
+- In order to find the critical value, we need to define degrees of freedom and probability. Then we will look up from t-table.
   - Degrees of freedom = `n1 + n2 + -2`
   - Probability = e.g. p=0.05, p=0.01. if p=0.05 95% of times we reject the null hypothesis.
 
