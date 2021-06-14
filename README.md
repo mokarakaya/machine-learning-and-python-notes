@@ -18,3 +18,5 @@ My notes about the topics in machine learning and python
 - [Statistics](statistics)
 
 - [Deep Learning](deep-learning)
+
+- [Natural Language Processing](nlp)
