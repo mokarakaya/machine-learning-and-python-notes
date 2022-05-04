@@ -35,8 +35,9 @@ As an example; next movie recommendation. The embeddings will represent movies, 
 
 
 ## Embedding Operations
-- <:TODO>
-- **Averaging**: 
+- **Averaging**: Average of the items that a user has consumed can represent the user.
+- **Substraction/Addition**: Difference between coats from cheap and the expensive brands can be used to find cheap/expensive version of another type of product.
+- **Nearest Neighbors**: Embeddings can be used for recommendation or search. E.g. find similar docs to the given search query. Approximate Nearest Neighbors search will reduce the complexity of KNN to log(n) (depending on the ANN algorithm).
 
 ## Pretrained embeddings
 
