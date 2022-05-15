@@ -12,5 +12,7 @@ def run():
     test_y = df_test.iloc[:, -1:].values.flatten()
 
     reg = DecisionTreeRegressor().fit(df_train_x, df_train_y)
-    print('dataset: wine, algo: decision tree regression, score:', reg.score(test_x, test_y)) # 0.31
-
+    print(
+        "dataset: wine, algo: decision tree regression, score:",
+        reg.score(test_x, test_y),
+    )  # 0.31

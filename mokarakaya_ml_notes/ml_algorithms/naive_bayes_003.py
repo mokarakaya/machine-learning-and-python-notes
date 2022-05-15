@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score
 from mokarakaya_ml_notes.ml_algorithms.util import data_util
 from sklearn.naive_bayes import MultinomialNB
 
+
 def run():
     train_ratio = 0.8
 
@@ -16,4 +17,4 @@ def run():
     predictions_sk = model_sk.predict(df_X_test)
 
     accuracy = accuracy_score(df_y_test, predictions_sk)
-    print('dataset: spam, algo: naive bayes, score:', accuracy) # 0.9806629834254144
+    print("dataset: spam, algo: naive bayes, score:", accuracy)  # 0.9806629834254144

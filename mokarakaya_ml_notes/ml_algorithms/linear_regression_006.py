@@ -2,6 +2,7 @@ import numpy as np
 from mokarakaya_ml_notes.ml_algorithms.util import data_util
 from sklearn.linear_model import LinearRegression
 
+
 def linear_regression(X, y, epochs=1000, learning_rate=0.0001):
     m = float(y.shape[0])
     y = y.values.flatten()
@@ -20,6 +21,7 @@ def linear_regression(X, y, epochs=1000, learning_rate=0.0001):
 
     return theta, b
 
+
 def run():
     train_ratio = 0.8
     df_train, df_test = data_util.read_wine_quality_data(train_ratio)
@@ -32,7 +34,9 @@ def run():
     predictions = np.dot(theta, test_x.T) + b
 
     avg_error = np.sum(np.abs(predictions - test_y)) / test_y.shape
-    print('dataset: wine, algo: linear_reg_impl, score:', avg_error) #avg_error: [0.78951395]
+    print(
+        "dataset: wine, algo: linear_reg_impl, score:", avg_error
+    )  # avg_error: [0.78951395]
 
     reg = LinearRegression().fit(df_train_x, df_train_y)
-    print('dataset: wine, algo: linear_reg, score:', reg.score(test_x, test_y)) # 0.31
+    print("dataset: wine, algo: linear_reg, score:", reg.score(test_x, test_y))  # 0.31

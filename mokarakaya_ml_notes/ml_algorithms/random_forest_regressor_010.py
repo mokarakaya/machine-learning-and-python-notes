@@ -12,4 +12,7 @@ def run():
     test_y = df_test.iloc[:, -1:].values.flatten()
 
     reg = RandomForestRegressor().fit(df_train_x, df_train_y)
-    print('dataset: wine, algo: random forest regression, score:', reg.score(test_x, test_y))
+    print(
+        "dataset: wine, algo: random forest regression, score:",
+        reg.score(test_x, test_y),
+    )
