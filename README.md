@@ -3,7 +3,7 @@ My notes about the topics in machine learning and python
 
 # Content
 
-- [Machine Learning Fundamentals](machine-learning)
+- [Machine Learning Fundamentals](machine_learning)
 
 - [Machine Learning Algorithms](machine-learning/algorithms)
 
@@ -17,6 +17,6 @@ My notes about the topics in machine learning and python
 
 - [Statistics](statistics)
 
-- [Deep Learning](deep-learning)
+- [Neural Networks](neural_networks)
 
 - [Natural Language Processing](nlp)

@@ -1,6 +1,3 @@
-# Loss Function
-- Classification: cross-entropy.
-- Regression: MSE.
 
 
 # Optimization Functions
