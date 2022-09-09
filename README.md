@@ -5,7 +5,7 @@ My notes about the topics in machine learning and python
 
 - [Machine Learning Fundamentals](machine_learning)
 
-- [Machine Learning Algorithms](machine-learning/algorithms)
+- [Machine Learning Algorithms](machine_learning/algorithms)
 
 - [Implementation for the Machine Learning Algorithms](mokarakaya_ml_notes/ml_algorithms)
 
@@ -20,3 +20,5 @@ My notes about the topics in machine learning and python
 - [Neural Networks](neural_networks)
 
 - [Natural Language Processing](nlp)
+
+- [List of Resources to Learn Various Topics](resources)
