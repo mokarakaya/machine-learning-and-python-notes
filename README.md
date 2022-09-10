@@ -22,3 +22,5 @@ My notes about the topics in machine learning and python
 - [Natural Language Processing](nlp)
 
 - [List of Resources to Learn Various Topics](resources)
+
+- [Probability](probability)
