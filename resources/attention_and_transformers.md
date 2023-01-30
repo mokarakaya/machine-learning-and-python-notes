@@ -10,6 +10,7 @@
 ## Web
 - https://jalammar.github.io/illustrated-transformer/
 - https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/
+- [The Annotated Transformer](http://nlp.seas.harvard.edu/annotated-transformer/)
 
 ## Video
 - https://www.youtube.com/watch?v=iDulhoQ2pro (Attention Is All You Need)
