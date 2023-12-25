@@ -24,3 +24,5 @@ My notes about the topics in machine learning and python
 - [List of Resources to Learn Various Topics](resources)
 
 - [Probability](probability)
+
+- [Recommender Systems](rec_sys)
