@@ -91,10 +91,20 @@ gm.predict_proba(X_train)
   - DBSCAN: It measures the density of the instances. If an instance has few neighbors, it is an anomaly.
   - Isolation Forest: It isolates instances by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature. It is good for high-dimensional data.
   - Gaussian Mixture: It assumes that normal instances belong to a small number of clusters. It is good for low-dimensional data.
+  - Prophet: It is a time series forecasting model. It is good for time series data. It uses trend, seasonality and holidays.
 - **One Class Classification**:
   - **Autoencoders:** It is a neural network that tries to reproduce its inputs. If the error is high, it is an anomaly.
     - Input -> Encoder -> Latent Space -> Decoder -> Output 
     - Input and output layers have the same number of neurons.
     - Loss function is the mean squared error between the input and the output.
     - Reconstruction error is the difference between the input and the output. If the error is higher than a threshold, it is an anomaly.
-  
+- **Challenges in Anomaly Detection projects:**
+  - Lack of labeled data.
+  - Data pre-processing and feature engineering.
+  - Selecting appropriate algorithm.
+  - Concept drift.
+  - Minimizing false positives.
+- **Handling false positives and false negatives:**
+  - Adjusting the threshold.
+  - Feature engineering.
+  - Ensemble methods.
