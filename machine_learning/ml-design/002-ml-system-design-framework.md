@@ -1,12 +1,68 @@
 # Define the problem
-- todo
+- ML I/O
+  - input: 
+    - What kind of data is available?
+    - Size of the data?
+    - Is the raw data well-structured. 
+      - Is the data noisy.
+      - What pre-processing we need.
+    - Computational requirements:
+      - What computational resources do we have?
+        - For training.
+        - For serving.
+      - Do we need model or data parallelization?
+    - PII
+      - Privacy requirements.
+      - Copyright restrictions.
+  - output: Prediction output.
+    - How the output is going to be used?
+- ML Objective:
+  - Training objectives.
+  - Business level objectives.
+  - Accuracy vs performance. 
+    - When the predictions will be generated/used.
+  - Traffic/bandwidth:
+    - How many predictions do we expect per day/second?
+    - How many users do we expect per day/second?
+- ML Category:
+  - Recommendation, ranking, classification, regression, generation.
 # Design the data processing pipeline
-- Data we need
-- Collection method
-- Pre-processing:
-- PII
-- Train test split
+- Is train and inference in offline or online.
+- Features:
+  - Define each feature we want to use.
+- Feature engineering:
+  - Mask PII.
+  - Normalize fields: 
+    - everything to lowercase.
+    - Remove noise.
+    - Deduplication.
+    - Format timestamps.
+  - Categorize categorical features.
+  - Normalize/Standartize continuous features.
+- Save data to postgres.
 # Create a model architecture
-# Train and evaluate the model
+- Select a simple model:
+  - Linear regression or logictic regression.
+  - XGBoost or neural network.
+- Latency and memory optimization.
+# Train the model
+- Optimizer algorithm to use.
+- Metrics to monitor during training.
+- Hyperparameter-tuning.
+- Model or data parallelisation.
+# Evaluate the model
+- Evaluate f1, precision, recall, confusion matrix etc.
+- Bias: Fairness between groups.
+- Sensitivity/Robustness: Do minor changes affect the model performance.
+- Compare to the baseline.
 # Deploy the model
+-  A/B tests, canary deployment, feature flags, and/or shadow deployment.
+- How will the model be served? e.g. vertexai endpoint with batching input (bentoml)
+- Monitor the health and the performance of the model.
 # Wrap up 
+- Debrief: 
+  - review the problem scope
+  - data processing pipeline
+  - how you would train, evaluate, and deploy the model.
+- What are the bottlenecks or tradeoffs in this design?
+- How to scale to more training instances or inference?

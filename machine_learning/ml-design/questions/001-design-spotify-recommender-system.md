@@ -26,8 +26,25 @@
 - ML Category:
   - Recommendation, ranking
 # Design the data processing pipeline
-
+- Is train and inference in offline or online.
+- Features:
+  - Age group
+  - Location (City, State)
+  - Most recent N favourite artists.
+  - Most recent N listened songs.
+- Feature engineering:
+  - Mask PII.
+  - Parse location.
+  - Normalize fields: 
+    - everything to lowercase.
+    - Remove noise.
+    - Deduplication.
+    - Format timestamps.
+- Save data to postgres.
 # Create a model architecture
+- Collaborative filtering, content-based.
+- Deep learning vs XGBoost.
+- 
 # Train and evaluate the model
 # Deploy the model
 # Wrap up 
