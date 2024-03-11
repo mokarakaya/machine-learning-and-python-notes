@@ -47,6 +47,8 @@
 - Latency and memory optimization.
 # Train the model
 - Optimizer algorithm to use.
+  - Regression: Least squares
+  - Classification: Cross-entropy.
 - Metrics to monitor during training.
 - Hyperparameter-tuning.
 - Model or data parallelisation.
