@@ -1,0 +1,75 @@
+# Define the problem
+-  Suggested posts from content creators.
+- May or may not be followers
+- ML I/O
+    - Data
+      - Input:
+        - viewer
+          - interaction history
+        - post
+          - post creator's features.
+          - embeddings for video, audio, text.
+            - embeddings created by other models.
+      - Output:
+        - interaction like, comment.
+- ML Objective:
+  - Training objectives.
+    - engage with the content. like/comment etc. 
+  - Business level objectives.
+    - Improve daily active users.
+    - Improve session engagement.
+  - Non-functional 
+    - scalable
+    - available
+    - monitoring
+    - debugability
+    - alerts and warning.
+- ML Category:
+  - ranking.
+# Design the data processing pipeline
+# Create a model architecture
+- Pipeline
+  - Candidate generation
+    - ANN
+    - Compute embeddings for:
+      - viewers
+      - posts
+    - How to create embeddings:
+      - Collaborative filtering
+        - Decomposition
+        - Not the current standart.
+      - Two tower network techinique
+        - a neural network with classification with layers:
+          - viewer features, post features
+          - Viewer tower, Post item tower
+            - We don't have densely connected layers between towers.
+            - But they are trained together.
+          - d dimentional viewer embeddings, d dimentional post embeddings.
+          - sigmoid layer
+          - label.
+        - binary cross entropy loss.
+        - stochastic gradient descent
+        - adam optimizer.
+        - AUC ROC curve. 80% target.
+  - Ranking
+    - We may use the same model (two tower)
+  - Post-processing
+# Train the model
+# Evaluate the model
+- AUC ROC
+  - 80%
+- A/B test
+  - N number of users are shown existing model.
+  - N number of users are shown new model.
+  - Do we have more daily active users
+  - Do we have more user engagement.
+- Safeguard metrics:
+  - Does it increase reports.
+# Deploy and monitor the model
+# Wrap up 
+- Deployment and monitoring.
+- Online learning.
+- How to scale training and serving.
+- Imbalanced data.
+- How to solve cold start problem.
+  - Show popular posts.
