@@ -26,3 +26,7 @@ My notes about the topics in machine learning and python
 - [Probability](probability)
 
 - [Recommender Systems](rec_sys)
+
+- [ML Design](machine_learning/ml-design)
+
+- [ML Coding](machine_learning/ml-coding)
