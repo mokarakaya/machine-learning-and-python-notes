@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 
 
 def get_data():
-    dist_1 = np.random.normal(2, 1, 40).reshape(20, 2)
-    dist_2 = np.random.normal(5, 1, 40).reshape(20, 2)
-    dist_3 = np.random.normal(10, 1, 40).reshape(20, 2)
+    dist_1 = np.random.normal(5, 1, 40).reshape(20, 2)
+    dist_2 = np.random.normal(10, 1, 40).reshape(20, 2)
+    dist_3 = np.random.normal(15, 1, 40).reshape(20, 2)
     x = np.concatenate((dist_1, dist_2, dist_3))
     np.random.shuffle(x)
     return x
@@ -65,21 +65,7 @@ def update_clusters(clusters):
     return clusters
 
 
-def main():
-    data = get_data()
-    number_of_clusters = 3
-
-    centroids = np.random.randint(0, len(data) - 1, number_of_clusters)
-    centroids = data[centroids]
-    clusters_changed = True
-    clusters = create_clusters(data, centroids)
-    iter = 1
-    while clusters_changed:
-        print(f"iter:{iter}")
-        clusters = update_clusters(clusters)
-        clusters, clusters_changed = assign_to_clusters(clusters)
-        iter += 1
-
+def plot_clusters(clusters):
     color = ["r", "b", "g"]
     colors = []
     x = []
@@ -89,9 +75,26 @@ def main():
             x.append(item[0])
             y.append(item[1])
             colors.append(color[cluster_id])
-
     plt.scatter(x, y, c=colors)
     plt.show()
+
+
+def main():
+    data = get_data()
+    number_of_clusters = 3
+
+    centroids = np.random.randint(0, len(data) - 1, number_of_clusters)
+    centroids = data[centroids]
+    clusters_changed = True
+    clusters = create_clusters(data, centroids)
+    iter_id = 1
+    while clusters_changed:
+        print(f"iter:{iter_id}")
+        clusters = update_clusters(clusters)
+        clusters, clusters_changed = assign_to_clusters(clusters)
+        iter_id += 1
+
+    plot_clusters(clusters)
 
 
 if __name__ == "__main__":
