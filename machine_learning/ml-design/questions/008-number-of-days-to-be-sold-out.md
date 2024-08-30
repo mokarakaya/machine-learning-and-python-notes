@@ -10,37 +10,99 @@ Calculate number of days to be sold out for each search result.
 - We prefer to solve it as a regression problem because:
   - We can generalize the general behavior of the users better.
   - We can make predictions even if we don't have enough data for a particular room.
-- `y`=number of days to be sold out before the stay date.
-  - if stay_date:15/07 and we predict the room to be sold out on 10/07
-  - the model should return 5.
-  - the model is not dependent to the start date.
-  - We can calculate the real number days to return after model prediction.
-  - if the query date is 01/07 we return (number_of_days_to_stay - y)
+- y value:
+  - option 1:
+    - `y` = number of days to be sold out until the search date.
+      - if search date is 10/07 and sold out date it 15/07
+      - the model should return 5.
+  - option 2:
+    - `y`=number of days to be sold out before the stay date.
+      - if stay_date:15/07 and we predict the room to be sold out on 10/07
+      - the model should return 5.
+      - We can calculate the real number days to return after model prediction.
+      - if the query date is 01/07 we return (number_of_days_to_stay - y)
 - We predict stay_date for each day between stay_start_date and stay_end_date.
 - Then we return the minimum.
 - This means if we narrow the total stay date y may get higher.
 - We return this for each search result, therefore it should be fast.
 - RMSE.
 - Engagement. Do the users book more often. A/B test
-- Inputs:
-  - Hotel data
-    - location
-    - hotel
-  - Room data
-    - number of rooms
-    - room_type
-  - Context
+- Features:
+  - Entity features:
+    - Hotel data
+      - city
+      - hotel
+    - Room data
+      - number of rooms
+      - room_type
+  - Analytics features:
+    - number of views in last N days.
+    - number of appearance in search in last N days. 
+  - Context features
     - stay_date (month, day)
     - number of available rooms
     - number of bookings in last 7 days
     - number of bookings in last 30 days
+    - number of days to stay date
+# Design the data processing pipeline
+- Data collection:
+  - Collect search data and sample it.
+  - Calculate number of days to be sold out for each search result.
+  - If we target a particular region, hotel type etc, we can change sampling.
+- Data processing:
+  - Numerical features:
+    - linear regression and neural networks: needs normalization.
+      - they will converge faster.
+    - gradient boosting: may not need normalization. 
+      - decision trees split based on feature thresholds.
+      - Therefore, normalization may not be needed.
+    - Neural networks:
+      - Same as linear regression.
+  - Categorical features:
+    - Gradient boosting: Not needed.
+      - Each category is already a potential branch.
+    - Linear regression: needed.
+      - one-hot encoding: if there are not many categories < 10K.
+      - frequency encoding: rare categories are in others category.
+      - target encoding: replace each category with the target mean of the category.
+      - cluster based encoding: needs clustering first.
+    - Neural networks:
+      - Same as linear regression. Except for embeddings.
 - We maintain an online feature store to keep:
   - number of available rooms
   - Bookings in last n days.
   - We should receive each booking event
-# Design the data processing pipeline
+- Streaming events:
+  - Bookings
+  - Views
+  - Appearance in search.
+- We can decide later to remove costly features if they don't contribute to performance.
 # Create a model architecture
+- Linear regression as a baseline:
+  - Easier to interpret the feature importance by using coefficients.
+- Boosting algorithm:
+  - Non-linear. combination of weak learners.
+  - We can use SHAP values to interpret model predictions:
+    - For a single prediction, SHAP values indicate how much each feature pushed
+    the prediction lower or compared to the mean prediction value.
+  - May overfit easier. Be careful with the number of trees and the depth of the trees.
+- Neural network:
+  - Can learn more complex relations between features. Less feature engineering.
+  - Also sensitive to data quality e.g. null values, outliers.
+- We should also measure the latency and memory requirements and optimize them if needed:
+  - quantization
 # Train the model
-# Evaluate the model
+- least squares optimization for regression.
+- monitor loss, accuracy on training and validation (do we overfit).
+- tune parameters.
+- data parallelizm:
+  - each device uses a different portion of the data and we get average of the gradients.
+  - central. central server gets the gradients and calculates mean and distributes.
+# Evaluate the model 
+- RMSE.
+- Robustness: Check if minor changes affect the model performance.
 # Deploy and monitor the model
+- a/b testing:
+  - We check if group b clicks the search results more.
+  - We check if group b books more.
 # Wrap up 
