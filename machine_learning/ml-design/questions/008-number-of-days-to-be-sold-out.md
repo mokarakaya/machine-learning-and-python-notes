@@ -105,4 +105,17 @@ Calculate number of days to be sold out for each search result.
 - a/b testing:
   - We check if group b clicks the search results more.
   - We check if group b books more.
+- X % of the users included in group B.
+- We calculate Z score by using the conversion rates in two groups standard error.
+- `Z score =  (conversion B - conversion A) / Standard Error`
+- `Standard Error = p * (1-p) (1/na + 1/nb)`
+- `p = total conversion`
+- `na: number of visitors in group A`
+- Check Z-score Confidence table by using the Z score for the confidence interval.
+- Positively high Z-scores more confidence to positive impact.
+- Negatively high Z-scores more confidence to negative impact.
+- Close to zero means no impact.
+
+- Determine sample size.
+
 # Wrap up 
