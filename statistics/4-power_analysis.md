@@ -37,15 +37,12 @@
 - Desired relative increase: 20%
 - New conversion rate to detect: CRb = 0.05 * 1.2 = 0.06
 - MDE= 0.06 - 0.05 = 0.01
-
-`n = (2 * (1.96 + 0.84)^2 * 0.055 * (1- 0.055)) / 0.01^2`
-Number of users per group: `n = 8150`
-Online sample size calculator: https://clincalc.com/stats/samplesize.aspx
+- `n = (2 * (1.96 + 0.84)^2 * 0.055 * (1- 0.055)) / 0.01^2`
+- Number of users per group: `n = 8150`
+- Online sample size calculator: https://clincalc.com/stats/samplesize.aspx
 
 ## Duration Calculation
 - Total required sample size = 8150 * 2 = 16300
 - Assume that we have 10K visitors per day.
 - Baseline conversion rate is 5%.
 - Test duration = 16300 / (10000 * 0.05) = 32.6 days.
-
-
