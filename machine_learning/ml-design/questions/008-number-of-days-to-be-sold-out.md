@@ -102,20 +102,40 @@ Calculate number of days to be sold out for each search result.
 - RMSE.
 - Robustness: Check if minor changes affect the model performance.
 # Deploy and monitor the model
-- a/b testing:
+- Define the problem:
+  - We want measure if the new model increases the CTR, conversion or bookings.
+- Key metrics:
   - We check if group b clicks the search results more.
   - We check if group b books more.
-- X % of the users included in group B.
-- We calculate Z score by using the conversion rates in two groups standard error.
-- `Z score =  (conversion B - conversion A) / Standard Error`
-- `Standard Error = p * (1-p) (1/na + 1/nb)`
-- `p = total conversion`
-- `na: number of visitors in group A`
-- Check Z-score Confidence table by using the Z score for the confidence interval.
-- Positively high Z-scores more confidence to positive impact.
-- Negatively high Z-scores more confidence to negative impact.
-- Close to zero means no impact.
-
-- Determine sample size.
+  - North Star: Check if the changes does not impact revenue negatively.
+  - Guardrail: Check if the changes does not impact number of search.
+  - Secondary: Average time spent in a hotel page. 
+- Randomization:
+  - We add users who run a search on the website randomly to a group.
+- Formulate hypotheses:
+  - Null: Users in group B don't book more than the other group.
+- Select a statistical test:
+  - We pick Z-test as:
+    - We compare means to a known population mean
+    - We know std
+    - Sample size is large
+- Conduct power analysis:
+  - Effect size: we expect to see 1% change in booking.
+  - Power: Probability of detecting a true effect (80%)
+  - Significance level (alpha): the probability of detecting  false positive (0.05)
+- Analyse test results:
+  - We calculate Z score by using the conversion rates in two groups standard error.
+  - `Z score =  (conversion B - conversion A) / Standard Error`
+  - `Standard Error = p * (1-p) (1/na + 1/nb)`
+  - `p = total conversion`
+  - `na: number of visitors in group A`
+  - Check Z-score Confidence table by using the Z score for the confidence interval.
+  - Positively high Z-scores more confidence to positive impact.
+  - Negatively high Z-scores more confidence to negative impact.
+  - Close to zero means no impact.
+- Evaluate and make recommendations:
+  - Decide if we want to release the change based on:
+  - p-value
+  - other metrics e.g. north star and guardrail.
 
 # Wrap up 

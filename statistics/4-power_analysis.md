@@ -29,6 +29,8 @@
 - Power: 80% (Standard)
 ## Calculations
 - Z-value for 95% confidence (two tailed test): 1.96
+- We use two tailed test because we don't know if group A or group B is better.
+  - Use one tailed test only if you know one of the groups is better.
 - Z-value for 80% power: 0.84
 
 - Baseline conversion rate CRo: 0.05
@@ -38,6 +40,7 @@
 
 `n = (2 * (1.96 + 0.84)^2 * 0.055 * (1- 0.055)) / 0.01^2`
 Number of users per group: `n = 8150`
+Online sample size calculator: https://clincalc.com/stats/samplesize.aspx
 
 ## Duration Calculation
 - Total required sample size = 8150 * 2 = 16300
