@@ -1,0 +1,14 @@
+# Standard Error
+- Standard error is used to calculate:
+  - likely difference between the sample mean and the population mean.
+  - We know the sample mean and standard deviation.
+  - We don't know the population.
+- We want to know if we have enough samples.
+- `SE = std / sqrt(N)` where:
+  - std: standard deviation of the sample.
+  - N: sample size.
+- Margin of Error: 
+  - `ME = z * SE`
+  - `z = 1.96` -> 95% confidence.
+  - `z = 2.576` -> 99% confidence.
+  - ME: We are x% confident that population mean is +- ME away from the sample mean.
