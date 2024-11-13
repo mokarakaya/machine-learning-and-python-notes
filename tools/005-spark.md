@@ -1,0 +1,26 @@
+# Spark
+- Four modules of Spark
+  - SQL
+  - Streaming
+  - MLlib
+  - GraphX
+
+- Skewed data:
+  - Data skew occurs when some partitions have significantly more data than others.
+    - Salting: Add a random key to the data to distribute it more evenly.
+    - Repartitioning: Increase the number of partitions.
+    - Broadcast Variables: Broadcast a small dataset to all nodes to avoid shuffling large datasets.
+- Data Shuffling:
+  - Data shuffling is redistributing the data across partitions. It happens when:
+    - Join operations: Each partitions get the data from the join table by the join key.
+    - Aggregation: groupbyKey, reducebyKey, countbyKey, etc.
+    - Repartition: Increases the number of partitions. 
+    - Coalesce: Reduces the number of partitions. 
+- Performance improvements:
+  - Use serializers other than Java such as Kryo.
+  - Keep partitions are 100-200MB.
+  - Repartition: when parallel work needed. It involves full shuffle.
+  - Coalesce: when non-parallel work needed. It does not involve full shuffle.
+  - Broadcast: broadcast small dataframes before join.
+  - cache and persist: Cache or persist the data to memory if it's used in multiple stages.
+  - persist(memory and disk): to avoid out of memory errors.

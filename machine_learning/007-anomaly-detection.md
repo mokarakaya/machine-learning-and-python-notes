@@ -87,9 +87,11 @@ gm.predict_proba(X_train)
   - Density-based: We assume that normal instances are dense. We can use DBSCAN for this purpose.
   - Clustering-based: We assume that normal instances belong to the same clusters. We can use DBSCAN for this purpose.
 - **Unsupervised Anamonaly Detection**:
-  - Local Outlier Factor (LOF): It measures the local density of the instances. If a point's neighbors are far away from it compared to the point's neighbors, it is an anomaly.
+  - Local Outlier Factor (LOF): It measures the local density of the instances. 
+If a point's neighbors are far away from it compared to the point's neighbors, it is an anomaly.
   - DBSCAN: It measures the density of the instances. If an instance has few neighbors, it is an anomaly.
-  - Isolation Forest: It isolates instances by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature. It is good for high-dimensional data.
+  - Isolation Forest: It isolates instances by randomly selecting a feature and then randomly selecting 
+a split value between the maximum and minimum values of the selected feature. It is good for high-dimensional data.
   - Gaussian Mixture: It assumes that normal instances belong to a small number of clusters. It is good for low-dimensional data.
   - Prophet: It is a time series forecasting model. It is good for time series data. It uses trend, seasonality and holidays.
 - **One Class Classification**:
