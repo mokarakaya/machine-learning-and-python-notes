@@ -5,7 +5,13 @@
 - We can solve this problem as a multi class classification model.
 - As the high labels will be low we can:
   - Oversample:
+    - random:
+      - good for small datasets and easy to implement. 
+      - may lead to overfitting as it duplicates without adding new information.
+    - smote (synthetic minority over-sampling)
+      - 
   - Undersample:
+    - 
   - Use class weights
 # Design the data processing pipeline
 # Create a model architecture
