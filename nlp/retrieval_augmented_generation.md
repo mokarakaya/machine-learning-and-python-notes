@@ -1,0 +1,42 @@
+# RAG
+- Retriever:
+  - Sparse retriever: tf-idf, bm25
+  - Dense retriever: bert embeddings.
+- Evaluation:
+  - Retriever: precision recall.
+  - Generator: bleu, rouge.
+  - Downstream task: precision, recall.
+- Hybrid search:
+  - Find documents with sparse retriever (bm25)
+  - Re-rank them with dense retriever (bert embeddings)
+- Handling large knowledge bases (long documents):
+  - Chunking:
+    - Fixed-length
+    - sentences
+    - paragraph
+    - semantic
+    - sliding window
+  - Summarization
+- Hierarchical retrieval:
+  - Search for relevant categories.
+  - Search within the relevant categories.
+- Small vs large chunk trade-off:
+  - Smaller chunks helps with the retriever but may lose context.
+  - Larger chunks keeps the context but loses focus on embeddings search.
+  - We can search in smaller chunks but add neighbors of the chunk to generation.
+- Late chunking:
+  - Apply the transformer layer of the embedding model to the entire document.
+  - This will generate token embeddings for each token.
+  - By applying pooling to the token embeddings for each chunk, we get chunk embeddings.
+  - This will help embedding generation by preserving the context.
+- Fine-tuning LLMs for RAG:
+  - Retrieval-augmented language modeling (REALM)
+  - Retrieval-Augmented Fine-Tuning (RAFT)
+- Balancing retrieval relevance and diversity:
+  - Prioritize both relevance and diversity in re-ranking.
+  - Split documents into categories and select from them.
+  - Cluster results and select documents from different clusters.
+- Consistency between generated output and retrieved documents:
+  - Ensure with prompting.
+  - Add citation to the output.
+  - Post-generation checks on the output.
