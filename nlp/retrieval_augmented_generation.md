@@ -3,9 +3,16 @@
   - Sparse retriever: tf-idf, bm25
   - Dense retriever: bert embeddings.
 - Evaluation:
-  - Retriever: precision recall.
+  - Retriever: precision@k recall@k, cumulative gain.
   - Generator: bleu, rouge.
   - Downstream task: precision, recall.
+- Evaluation without ground truth:
+  - Retriever 
+    - check average distance of the retrieved documents to query.
+  - Generator
+    - Multiple LLM's as judge.
+    - synthetic questions and answers based on existing documents.
+    - Public question/answering datasets.
 - Hybrid search:
   - Find documents with sparse retriever (bm25)
   - Re-rank them with dense retriever (bert embeddings)
