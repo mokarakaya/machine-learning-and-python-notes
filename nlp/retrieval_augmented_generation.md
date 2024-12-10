@@ -39,6 +39,10 @@
 - Fine-tuning LLMs for RAG:
   - Retrieval-augmented language modeling (REALM)
   - Retrieval-Augmented Fine-Tuning (RAFT)
+    - Supervised llm fine-tuning by using RAG inputs and outputs.
+    - Training data uses both golden and distractor documents:
+      - Golden: the documents that has the answer.
+      - Distractor: The documents that do not have the answer.
 - Balancing retrieval relevance and diversity:
   - Prioritize both relevance and diversity in re-ranking.
   - Split documents into categories and select from them.
