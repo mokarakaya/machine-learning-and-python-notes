@@ -59,7 +59,10 @@
 - Compare to the baseline.
 # Deploy the model
 -  A/B tests, canary deployment, feature flags, and/or shadow deployment.
-- How will the model be served? e.g. vertexai endpoint with batching input (bentoml)
+- How will the model be served and integrated with backend/frontend?
+  - Vertexai endpoint with batching input (bentoml)
+  - Kubernetes with orchestration
+  - Feature stores.
 - Monitor the health and the performance of the model.
 # Wrap up 
 - Debrief: 

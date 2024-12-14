@@ -1,0 +1,21 @@
+# Operating Systems
+- Mutexes (Mutual Exclusion):
+  - Only one thread can access to the critical section.
+  - `threading.Lock()`
+- Semaphores:
+  - Binary Semaphore: Acts like mutex.
+  - Counting Semaphore: 
+    - Allows n number of threads to access to the resource simultaneously.
+  - `threading.Semaphore(n)`
+- Deadlock:
+  - Thread A locks Resource1 and waits for Resource2
+  - Thread B locks Resource2 and waits for Resource1
+  - To prevent:
+    - Acquire locks in specific order.
+    - Use timeouts for lock acquisition.
+    - Identify and solve deadlocks dynamically.
+- Threading:
+  - CPython with GIL will allow only one thread to execute Python bytecode.
+  - But it's still useful for I/O bound tasks
+    - as thread will be released during I/O.
+  - Cython can bypass GIL and useful for CPU bound tasks.
