@@ -21,7 +21,7 @@ e.g. word "apple" will be updated to more "company-like" than "fruit-like"
   - The input is split into multiple-heads:
     - to learn different relationships using different QKV projections.
   - Disadvantages:
-    - Time complexity: O(n_2, d):
+    - Time complexity: O(n_2 * d):
       - n: sequence length
       - d: embedding dimension.
       - Sparse or linear attention to mitigate.
