@@ -1,0 +1,144 @@
+# Given
+- Design a system to help reviewers validate edits by users on a page.
+- A review can be rejected if:
+  - It conflicts with the biographies of living persons policy.
+  - It contains vandalism or patent nonsense.
+  - It contains obvious copyright violations.
+  - It contains legal threats, personal attacks or libel.
+
+# Define the problem
+- Show reviews the selected reason probabilities for each edit.
+- Explain the reasons for the selected reason.
+- Success criteria:
+  - Accuracy of the model.
+  - KPI:
+    - Reduced time spent on reviewing.
+# Design the data processing pipeline
+- Raw data:
+  - Original edit data:
+    - edit id
+    - edit timestamp
+    - editor id
+    - article id
+    - revert edit id (if it is a revert)
+    - review id (if it is reviewed)
+    - change size.
+    - description.
+    - changed text:
+      - line id
+      - prev version
+      - new version
+      - added text
+      - removed text
+  - Original review data:
+    - review id
+    - reviewer id
+    - article id
+    - edit id
+    - review timestamp
+    - review decision
+    - review reason
+      - review description
+      - selected category for each word in the edit.
+- Edit information:
+  - Textual information:
+    - Added text
+    - Removed text:
+    - Full text
+    - Language
+  - Metadata
+    - Type of edit: add/remove/modify
+    - Time of edit
+    - Number of added words
+    - Number of removed words.
+- User information:
+  - Account age
+  - Number of edits. (can be a time feature as well)
+  - Percentage of reverted edits. (can be a time feature as well)
+  - Percentage of reviewed edits. (can be a time feature as well)
+- Article information:
+  - Article age
+  - Number of edits. (can be a time feature as well)
+  - Number of editors. (can be a time feature as well)
+  - Number of reverts. (can be a time feature as well)
+  - Number of reviews. (can be a time feature as well)
+  - Number of views. (can be a time feature as well)
+# Create a model architecture
+- Bayesian model:
+  - For each word calculate the probability of the word being in a particular category.
+  - Multiply the probabilities of the words in the edit to 
+get the probability of the edit being in a particular category.
+  - Use the probabilities to select the reason.
+- One complex model.
+  - This model can be either a classifier or a NER model.
+    - Classifier:
+      - Easier to use predictions.
+      - Harder to explain predictions.
+      - SHAP values.
+    - NER:
+      - Need to extract final reasons from the text.
+      - Easier to explain predictions. Highlight words.
+    - We want to use both edit and context data.
+      - Train in a single model what combines both.
+# Train the model
+- How do we collect training dataset?
+  - Ensure the dataset is representative with stratified sampling.
+    - Check standard error of some important features e.g. account age.
+- How do we split the dataset?
+  - Time based cross-validation.
+- How do we train the model?
+  - Avoid overfitting and underfitting.
+  - Hyperparameter tuning.
+# Evaluate the model
+- Evaluation metrics.
+- Cost.
+- Latency.
+- Memory requirements.
+# Deploy and monitor the model
+- Integration and performance tests.
+- Dockerization and with Kubernetes.
+- Serving framework:
+  - Bentoml
+  - TorchServe
+  - FastAPI
+  - Rest vs grpc.
+- High throughput and low latency:
+  - Request batching.
+  - Rate limiting
+  - throttling.
+  - Adding requests to queue with redis.
+- Versioning
+  - A/B testing
+  - Canary releases
+  - Blue-green deployments
+  - Feature flags
+  - Rollbacks
+  - Shadow deployments.
+  - Ensure that the model is backward compatible. with the application.
+- Scalability
+  - Horizontal scaling
+  - Vertical scaling
+  - Auto-scaling
+- Latency Monitoring:
+  - latency
+  - throughput
+  - error rates
+  - resource usage
+  - Prometheus, Grafana.
+- Model Performance Monitoring
+  - concept drift
+  - data drift
+  - model explainability
+- Security:
+  - OAuth2
+  - api keys
+  - TLS.
+- How do we close the feedback loop?
+  - We can either retrain the model or update the model.
+  - Train from scratch:
+    - Computationally expensive and time consuming.
+  - Fine tuning:
+    - Catastrophic forgetting.
+    - Adjust learning rate properly.
+    - Use loss weights for complex instances in training
+      - Alternatively, focal loss.

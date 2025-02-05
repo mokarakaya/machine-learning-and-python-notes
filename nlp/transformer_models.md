@@ -18,7 +18,7 @@ e.g. word "apple" will be updated to more "company-like" than "fruit-like"
       - Attention weight is the softmax of scaled attention score.
       - Output is the weighted sum of values by attention weights.
   - Self attention allows parallel computing and captures long-range dependencies.
-  - The input is split into multiple-heads:
+  - The input weight is split into multiple-heads:
     - to learn different relationships using different QKV projections.
   - Disadvantages:
     - Time complexity: O(n_2 * d):
