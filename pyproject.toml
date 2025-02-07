@@ -5,9 +5,9 @@ description = ""
 authors = ["mokarakaya <mokarakaya@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "==3.9.19"
 torch = "~2.2"
-torchvision = "^0.12.0"
+torchvision = "~0.12"
 black = "^22.3.0"
 jupyterlab = "^3.4.2"
 pandas = "^1.4.2"
@@ -15,6 +15,7 @@ scikit-learn = "^1.1.1"
 pytest = "^7.1.2"
 evaluate = "^0.4.2"
 accelerate = "~0.21"
+sentence-transformers = "~3.4.1"
 
 [tool.poetry.dev-dependencies]
 
